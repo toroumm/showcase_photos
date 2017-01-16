@@ -1,0 +1,102 @@
+
+{% extends 'app/head.html'%}
+
+        {% block content %}
+            <style>
+
+            </style>
+
+            <script>
+
+                $(document).ready(function(e){
+
+                    $('#input_photos').hide();
+
+
+                    $('#a_search_photos').click(function(){
+
+                        $('#input_photos').trigger('click');
+                    });
+
+                    $('#a_show_photos').click(function(){
+
+                        var input = document.getElementById('input_photos');
+
+                        if(input.files && input.files[0]){
+
+                              $('#div_modal').modal('show');
+
+                            var reader = new FileReader();
+
+                            reader.onload = function(event){
+                                $('#imgFile').attr('src',event.target.result);
+                            }
+
+                            reader.readAsDataURL(input.files[0]);
+                        }
+
+                        return false;
+                    });
+
+
+                    $('#button_close_modal').click(function(){
+                        $('#div_modal').modal('close');
+
+                    });
+
+
+                });
+
+
+
+
+
+
+            </script>
+
+            <div class="row">
+
+
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                <div class="col-sm-8 col-md-8 col-xs-8">
+                    <input type="file" id="input_photos" multiple>
+                    <ul id="ul_primary">
+                        <li><a id="a_cadastro" href="#" rel="registerWindow"><span>Cadastro</span></a></li>
+                        <li><a id="a_search_photos" href="#" rel="searchWindow"><span>Search Photos</span></a></li>
+                        <li><a id="a_show_photos" href="" rel="showWindow"><span>Show Photos</span></a></li>
+                    </ul>
+
+
+                    <div id="div_modal" class="modal ">
+
+                        <img id="imgFile">
+                        <button id="button_close_modal" class="close" data-dismiss ="modal" aria-hidden="true">Close</button>
+
+                    </div>
+
+                </div>
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                <div class="col-sm-8 col-md-8 col-xs-8"></div>
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+                <div class="col-sm-8 col-md-8 col-xs-8"></div>
+                <div class="col-sm-2 col-md-2 col-xs-2"></div>
+
+
+            </div>
+
+        {% endblock %}
